@@ -1,2 +1,1 @@
-We study heat transfer in fins because fins are an effective way to increase the rate of heat transfer from a surface to a fluid. This is important in many applications.
-<br>The study of heat transfer in fins helps us to understand how fins work and how to design them to achieve the desired heat transfer rate. This knowledge can be used to improve the performance of many different devices and systems.
+To experimentally study the heat transfer through a long fin experiment and compare it with analytical solutions

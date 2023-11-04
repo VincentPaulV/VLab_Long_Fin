@@ -10,4 +10,4 @@
 ![alt text](images/img3.png)<br>
 
 4. Finally , check the calculated values by entering them in their respective boxes. Click back if you want to go back to previous slide. <br>
-![alt text](images/img5.png)<br>
+![alt text](images/img4.png)<br>

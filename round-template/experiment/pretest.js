@@ -80,7 +80,7 @@
 
 const myQuestions = [
   {
-    question: "The temperature distribution along a long fin is given by the equation T = T0 - T∞ * exp(-mx), where T0 is the base temperature, T∞ is the surrounding temperature, m is a constant, and x is the distance from the base of the fin. If m increases, what happens to the temperature drop along the length of the fin?",
+    question: "The temperature distribution along a long fin is given by the equation T = (T<sub>0</sub> - T<sub>∞</sub>)*e<sup>(-mx)</sup>, where T<sub>0</sub> is the base temperature, T<sub>∞</sub> is the surrounding temperature, m is a constant, and x is the distance from the base of the fin. If m increases, what happens to the temperature drop along the length of the fin?",
     answers: {
       a: " The temperature drop increases.",
       b: " The temperature drop decreases.",
@@ -98,6 +98,26 @@ const myQuestions = [
       c: "It cannot be determined from the information given.",
     },
     correctAnswer: "a"
+  },
+
+  {
+    question: "What is the main purpose of fins in heat transfer?",
+    answers: {
+      a: "To increase the surface area for convection",
+      b: "To decrease the thermal conductivity of the material",
+      c: "To prevent heat loss"
+    },
+    correctAnswer: "a"
+  },
+
+  {
+    question: "Why is it important to consider the variation of the convection heat transfer coefficient along the fin in the analysis of fins?",
+    answers: {
+      a: "Because the convection heat transfer coefficient is a strong function of the fluid motion at that point",
+      b: "Because the value of h is usually much lower at the fin base than it is at the fin tip",
+      c: "All the above"
+    },
+    correctAnswer: "c"
   }
 ];
 

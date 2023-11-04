@@ -28,7 +28,7 @@ var len = 20; //Meter
 var peri = 5; //Perimeter
 var a_c = 25; //Area of cross section
 var h_coeff = 100; //Convection coeff
-var k = 20;
+var k = 201;
 var qfin = 0;
 var t_l2 = 0;
 
@@ -186,7 +186,7 @@ function simperiod(){
   }
   else{
     drawGradient();
-    printcomment("Wait for "+ (5 - Math.round(time1)) + " seconds for steady state", 2);
+    printcomment("Wait till countdown reaches 0  ["+ (5 - Math.round(time1)) + " seconds left]", 2);
   }
   if (tbase < tinf) {
     printcomment("<strong>T<sub>base</sub> adjusted to <strong>" + (Math.round(tinf+5)), 2)
@@ -252,8 +252,11 @@ function calc(opt){
         datapoints.push({x:i, y:z});
     }
   }
-  q_fin = Math.sqrt(h_coeff * peri * a_c * k ) * (thetha_b).toFixed(2);
-  t_l2 = tinf + (thetha_b) * Math.exp(-m * (len / 2)).toFixed(8);
+  q_fin = Math.sqrt(h_coeff * peri * a_c * k ) * (thetha_b);
+  q_fin = q_fin.toFixed(2);
+  t_l2 = tinf + (thetha_b) * Math.exp(-m * (len / 2)).toFixed(2);
+  console.log(q_fin)
+  console.log(t_l2)
   drawgraph("graph", datapoints, "x in mm", "Temperature profile(T(x))");
   // drawgraph("graph1", datapoints_1, "x in mm", "Temperature profile(T)");
 
@@ -295,77 +298,14 @@ function drawGradient(){
   //heater simulation
   var h = 100*time1;
   //create gradient
-  var grd1 = ctx.createLinearGradient(0, 0, 0, h)
+  var grd1 = ctx.createLinearGradient(0, 0, h, 0)
   grd1.addColorStop(0,"red");
-  grd1.addColorStop(1,"white");
+  grd1.addColorStop(1,"pink");
   // Fill with gradient
   ctx.fillStyle = grd1;
-  ctx.fillRect(226, 170, 100, 30);
+  ctx.fillRect(100, 137, 295, 35);
    
    
-
-  // //tube simulation
-  // var w = 30*time1;
-  // //create gradient
-  // var grd2 = ctx.createLinearGradient(0, 0, 0, w)
-  // grd2.addColorStop(0,"red");
-  // grd2.addColorStop(1,"white");
-  // // Fill with gradient
-  // ctx.fillStyle = grd2;
-  // ctx.fillRect(90, 99, 255, 17);
-
-  // //tube gradient
-  // var x = 30*time1;
-  // var y = 200-x;
-  // // Create gradient
-  // var grd = ctx.createLinearGradient(0, 200, 0, y)
-  // grd.addColorStop(0,"red");
-  // grd.addColorStop(1,"white");
-  // // Fill with gradient
-  // ctx.fillStyle = grd;
-  // ctx.fillRect(90, 65, 255, 17);
-
-//   var x = 168,
-//     y = 281,
-//     // Radii of the white glow.
-//     innerRadius = 4*time1,
-//     outerRadius = 10*time1,2
-//     // Radius of the entire circle.
-//     radius = 50;
-
-// var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
-// //gradient.addColorStop(0, 'white');
-// gradient.addColorStop(0, '#ff9999');
-// gradient.addColorStop(1, 'white');
-
-// ctx.arc(168, 281, radius, 0, 2 * Math.PI);
-
-// ctx.fillStyle = gradient;
-// ctx.fill();
-
-  // //thermometer heights add offset
-   if(time1 > 0){  th[0] += .86;};
-   if(time1 > 0){  th[1] += .84;};
-   if(time1 > 0){  th[2] += .8;};
-   if(time1 > 3){  th[3] += .55;};
-   if(time1 > 3){  th[4] += .53;};
-
-   //thermometers drawing
-    ctx.fillStyle = "black";
-    ctx.lineJoin = "round";
-
-   //thermometer reading
-  //  ctx.beginPath();
-  //  ctx.fillRect(325.25, 335, 1.5, -th[0]);
-  //  ctx.fillRect(373.25, 335, 1.5, -th[1]);
-  //  ctx.fillRect(425,    335, 1.5, -th[2]);
-  //  ctx.fillRect(473.25, 335, 1.5, -th[3]);
-  //  ctx.fillRect(521.25, 335, 1.5, -th[4]);
-  //  ctx.arc(168, 281, 50, 0, 2 * Math.PI);   
-  //  ctx.stroke();
-  //  ctx.beginPath();
-  //  ctx.arc(168, 281, 20, 0, 2 * Math.PI);
-  //  ctx.stroke();
 }
 
 // initial model 
@@ -376,34 +316,23 @@ function drawModel()
   ctx.clearRect(0,0,250,400);  //clears the complete canvas#simscreen everytime
   
   var background = new Image();
-  background.src = "./images//model3.png";
+  background.src = "./images//model4.png";
 
   // Make sure the image is loaded first otherwise nothing will draw.
   background.onload = function(){
-    ctx.drawImage(background, 150, 0, 300, 300); 
+    ctx.drawImage(background, 50, 50, 400, 200); 
     //ctx.clearRect(78, 210, 46, 64);
     ctx.font = "15px Comic San MS";
 
     ctx.fillStyle = "black";
    ctx.lineJoin = "round";
-  //  ctx.beginPath();
-  //  ctx.rect(420, 230, 11, 112); //For T3 tube
-  //  ctx.fillRect(424, 332, 4, 7); //For T3 base node
-  //  ctx.rect(469, 230, 11, 112); //For T4 tube
-  //  ctx.fillRect(472, 332, 4, 7); 
-  //  ctx.rect(516, 230, 11, 112);
-  //  ctx.fillRect(520, 332, 4, 7);
-  //  ctx.rect(320, 230, 11, 112);
-  //  ctx.fillRect(324, 332, 4, 7);
-  //  ctx.rect(368, 230, 11, 112);
-  //  ctx.fillRect(372, 332, 4, 7);
 
-   ctx.rect(226, 170, 100, 30);
+   ctx.rect(100, 137, 295, 35);
    ctx.stroke();
 
  
     drawGradient();
-    printcomment("\th =100 W/m<sup>2</sup>.K<br>\t<i>K</i>  = 20 W/m.K", 1)
+    printcomment("\th =100 W/m<sup>2</sup>.K<br>\t<i>K</i>  = 201 W/m.K", 1)
   }
 }
   
@@ -619,7 +548,7 @@ The simulation requires JavaScript to be enabled.
 
 <!-- Region for calculation visible after onclick switchbutton-->
 <div id="calculation" style="visibility: hidden">
-  <p><i>q<sub>f</sub> = &#177; &radic; <span style='border-top:1px solid black'>(h.P.k.A.(T<sub>b</sub> - T<sub>∞</sub>))<br>
+  <p><i>q<sub>f</sub> = &#177; &radic;(h.P.k.A.(T<sub>b</sub> - T<sub>∞</sub>))<br>
   <p><b>Heat transfer rate through a long fin, </b></p>
   <div class="tooltip"><label for="qvalue"><i> q<sub>f</sub> = </i></label><input type="number" id="qvalue" style="width: 125px;"> W <sub>(upto 2 decimal points)</sub>
     <span class="tooltiptext"><script>

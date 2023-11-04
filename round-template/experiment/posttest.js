@@ -107,6 +107,17 @@
         d: "80°C"
       },
       correctAnswer: "c"
+    },
+
+    {
+      question: "What is one of the assumptions made in the analysis of fins?",
+      answers: {
+        a: "Constant thermal conductivity of the material",
+        b: "Constant and uniform convection heat transfer coefficient over the entire surface of the fin",
+        c: "Steady operation with no heat generation in the fin",
+        d: "All of the above"
+      },
+      correctAnswer: "d"
     }
   ];
 
